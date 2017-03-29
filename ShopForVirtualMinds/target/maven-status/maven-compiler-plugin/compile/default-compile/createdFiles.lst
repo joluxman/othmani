@@ -1,0 +1,17 @@
+com\virtualminds\shop\controller\LoginController.class
+com\virtualminds\shop\entities\Order.class
+com\virtualminds\shop\entities\ShoppingCart.class
+com\virtualminds\shop\dao\IShopDAO.class
+com\virtualminds\shop\entities\Customer.class
+com\virtualminds\shop\service\IAdminProductService.class
+com\virtualminds\shop\controller\AdminCategoryController.class
+com\virtualminds\shop\entities\Role.class
+com\virtualminds\shop\entities\Product.class
+com\virtualminds\shop\entities\User.class
+com\virtualminds\shop\service\IAdminCategoryService.class
+com\virtualminds\shop\service\IShopVisitorService.class
+com\virtualminds\shop\dao\IShopDAOImpl.class
+com\virtualminds\shop\controller\AdminProductController.class
+com\virtualminds\shop\service\impl\ShopServiceImpl.class
+com\virtualminds\shop\entities\Category.class
+com\virtualminds\shop\entities\OrderLine.class

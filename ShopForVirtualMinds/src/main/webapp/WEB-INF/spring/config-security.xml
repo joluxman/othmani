@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/security
+       http://www.springframework.org/schema/security/spring-security.xsd">
+
+
+       <security:http auto-config="true"  use-expressions="true" >
+
+              <security:intercept-url pattern="/login" access="permitAll()" />
+              <security:intercept-url pattern="/adminProd/**" access="hasRole('ROLE_ADMIN_PROD')" />
+              <security:intercept-url pattern="/adminCat/**" access="hasRole('ROLE_ADMIN_CAT')" />
+              <security:form-login login-page="/login" default-target-url="/adminProd/index"
+                                   login-processing-url="/login"
+                                   authentication-failure-url="/login?error"
+                                   username-parameter="username" password-parameter="password"/>
+              <security:logout logout-success-url="/login" />
+              <security:csrf disabled="true" />
+       </security:http>
+
+
+       <security:authentication-manager alias="authenticationManager">
+              <security:authentication-provider>
+                     <security:user-service>
+                            <security:user name="jed" password="jed" authorities="ROLE_ADMIN_PROD" />
+                            <security:user name="jalila" password="jalila" authorities="ROLE_ADMIN_CAT" />
+                     </security:user-service>
+                     <!--<password-encoder hash="md5" />-->
+                     <!--
+                                 <jdbc-user-service data-source-ref="dataSource" users-by-username-query="select USERNAME,PASSWORD, ACTIVATED from USERS where USERNAME=?" authorities-by-username-query="select u.USERNAME, r.ROLENAME from USERS u, ROLES r where u.IDUSER = r.IDUSER and u.USERNAME =? " />
+                     -->
+              </security:authentication-provider>
+       </security:authentication-manager>
+
+</beans>
